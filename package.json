@@ -2,7 +2,7 @@
   "name": "lex-polynomial",
   "version": "1.0.0",
   "description": "",
-  "main": "src/Polynomial.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
