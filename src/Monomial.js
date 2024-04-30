@@ -68,7 +68,7 @@ class Monomial {
         return 0;
     }
 
-    static getGCM(mono1, mono2) {
+    static getGCD(mono1, mono2) {
         const commonVars = {};
         const keys1 = Object.keys(mono1.variables);
         for (const key of keys1) {
@@ -82,7 +82,7 @@ class Monomial {
         return new Monomial(commonVars);
     }
 
-    static getGCD(mono1, mono2) {
+    static getLCM(mono1, mono2) {
         const lcmVars = {};
         const allKeys = new Set([...Object.keys(mono1.variables), ...Object.keys(mono2.variables)]);
         for (const key of allKeys) {
