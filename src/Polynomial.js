@@ -92,7 +92,7 @@ class Polynomial {
             if (dlt == null) {
                 throw new Error(`Cannot divide by Polynomial of zero.`);
             }
-            if (Monomial.compare(lt.getMonomial(), dlt.getMonomial())>0) {
+            if (! lt.getMonomial().dividableByMonomial(dlt.getMonomial())) {
                 return [quotient, reminder];
             }
             let dt = lt.divideByTerm(dlt);

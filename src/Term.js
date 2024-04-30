@@ -71,6 +71,8 @@ class Term {
             const newPower = powerInDividend - powerInDivisor;
             if (newPower > 0) {
                 newVars[varName] = newPower;
+            } else if (newPower === 0) {
+                delete newVars[varName];
             }
         }
 
