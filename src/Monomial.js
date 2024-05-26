@@ -36,6 +36,14 @@ class Monomial {
         return true;
     }
 
+    compare(mono) {
+        return Monomial.compare(this, mono);
+    }
+
+    equal(mono) {
+        return Monomial.isSame(this, mono);
+    }
+
     static isSame(mono1, mono2) {
         return Monomial.compare(mono1, mono2) === 0;
     }

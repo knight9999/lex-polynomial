@@ -79,6 +79,26 @@ class Polynomial {
         return new Polynomial(newTerms);
     }
 
+    multiplyPolynomial(poly) {
+        let result = new Polynomial([]);
+        const terms = poly.getTerms();
+        for (let i=0; i < terms.length; i++) {
+            const term = terms[i];
+            result = result.add(this.multiplyTerm(term));
+        }
+        return result;
+    }
+
+    quotient(divisor) {
+        const [q, r] = this.divideByPolynomial(divisor);
+        return q;
+    }
+
+    reminder(divisor) {
+        const [q, r] = this.divideByPolynomial(divisor);
+        return r;
+    }
+
     divideByPolynomial(divisor) {
         let reminder = this.clone();
         let quotient = new Polynomial([]);
@@ -86,7 +106,7 @@ class Polynomial {
         while (true) {
             let lt = reminder.getLeadingTerm();
             if (lt == null) {
-                return [null, null];
+                return [new Polynomial([]), new Polynomial([])];
             }
             let dlt = divisor.getLeadingTerm();
             if (dlt == null) {
@@ -98,7 +118,7 @@ class Polynomial {
             let dt = lt.divideByTerm(dlt);
             quotient = quotient.add(new Polynomial([dt]));
             reminder = reminder.sub(dt.multiplyPolynomial(divisor));
-            if (reminder == null) {
+            if (reminder == 0) {
                 return [quotient, reminder];
             }
         }
@@ -111,6 +131,9 @@ class Polynomial {
     toString() {
         let flagLeading = true;
         let result = "";
+        if (this.terms.length == 0) {
+            return "0";
+        }
         for (const term of this.terms) {
             if (term.getCoefficient()>0 && ! flagLeading) {
                 result += "+" + term.toString();
