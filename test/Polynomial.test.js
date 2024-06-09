@@ -19,7 +19,14 @@ describe('Polynomial', () => {
         const result = p1.reminder(p2);
         expect(result.toString()).toEqual("-y-2z-4");
     });
-    test('should correctly devide and zero', () => {
+    test('chould correctly devide and get zero quotient', () => {
+        const p1 = new Polynomial("2x+y-2");
+        const p2 = new Polynomial("2x^2+y-2");
+        const result = p1.divideByPolynomial(p2);
+        expect(result[0].toString()).toEqual("0");
+        expect(result[1].toString()).toEqual("2x+y-2");
+    });
+    test('should correctly devide and get zero reminder', () => {
         const p1 = new Polynomial("2x^2+y-2");
         const p2 = new Polynomial("2x^2+y-2");
         const result = p1.divideByPolynomial(p2);
